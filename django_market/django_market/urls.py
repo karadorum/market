@@ -18,7 +18,9 @@ from django.urls import path
 from shop import views
 
 urlpatterns = [
-    path('<int:pk>/', views.ProductDetail.as_view(), name='detail'),
-    path('', views.ProductListView.as_view(), name='index'),
+    
+    path('products/', views.ProductListView.as_view(), name='index'),
+    path('categories/<int:pk>/', views.CategoryListView.as_view(), name = 'products'),
+    path('products/<int:pk>/', views.ProductDetail.as_view(), name='detail'),
     path('admin/', admin.site.urls),
 ]

@@ -1,4 +1,16 @@
+{% for category in categories %} 
+    
+<h1>{{category.title}}</h1>
+<h2> {{ category.description}}</h2>
+<a href='http://127.0.0.1:8000/categories/{{category.id}}/'>{{category.title}}</a>
+    
+  {% endfor %} 
+
+
+
 {% for product in products %} 
-    <h2>{{product.title}}</h2>
+    
+    <a href='http://127.0.0.1:8000/products/{{product.id}}/'>{{product.title}}</a>
     <p>{{ product.description}}</p>
+    
   {% endfor %} 

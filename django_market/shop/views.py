@@ -2,12 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 # Create your views here.
 
-def index (request):
-    browser_info = request.META['HTTP_USER_AGENT']
-    return HttpResponse('Привет! Я знаю много информации о твоём браузере{}'.format(browser_info))
 
 from django.views import generic
 from .models import Product
+from .models import Category
 
 class ProductListView(generic.ListView):
 
@@ -23,3 +21,16 @@ class ProductListView(generic.ListView):
 class ProductDetail(generic.DetailView): 
     template_name = 'product_detail.html' 
     model = Product
+
+
+class CategoryListView(generic.ListView):
+    template_name = 'category_list.html'
+    model = Category
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['products'] = Category.objects.all()
+        return context
+
+
+
