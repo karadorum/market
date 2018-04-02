@@ -27,10 +27,7 @@ class CategoryListView(generic.ListView):
     template_name = 'category_list.html'
     model = Category
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['products'] = Category.objects.all()
-        return context
+    
 
 
 
