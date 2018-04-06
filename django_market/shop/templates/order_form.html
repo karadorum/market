@@ -1,0 +1,16 @@
+{% if user.is_authenticated %} 
+
+
+    <p>Привет, {{ user.username }}!</p>
+    {% endif %}
+
+    
+
+<h1>Заказ товара {{product.title}}</h1>
+  <form method="POST"> 
+    {% csrf_token %} 
+    {{ form.as_p }} 
+    <button type="submit" class="save btn btn-default">Заказать</button>
+  </form>
+
+  

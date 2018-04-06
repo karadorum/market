@@ -1,0 +1,36 @@
+{% if user.is_authenticated == False %} 
+  <p>Привет, Гость!</p>
+  <p><a href="{% url 'signup' %}">Регистрация</a></p>
+  {% endif %}
+
+{% if user.is_authenticated %} 
+    <p>Привет, {{ user.username }}!</p>
+    <p><a href="{% url 'logout' %}">Выйти</a></p>
+  {% else %} 
+    <p>You are not logged in.</p>
+    <a href="{% url 'login' %}">Войти</a> 
+  {% endif %}
+
+{% for category in categories %} 
+    
+
+<h2> {{ category.description}}</h2>
+<a href='http://127.0.0.1:8000/categories/{{category.id}}/'><h1>{{category.title}}</h1></a>
+    
+  {% endfor %} 
+
+
+
+{% for product in products %} 
+    
+    <a href='http://127.0.0.1:8000/products/{{product.id}}/'>{{product.title}}</a>
+    <p>{{ product.description}}</p>
+    
+  {% endfor %} 
+
+{% if user.is_superuser %}
+ <a href='http://127.0.0.1:8000/products/new/'><h1>Добавить продукт</h1></a>
+
+ {% endif %}
+
+
